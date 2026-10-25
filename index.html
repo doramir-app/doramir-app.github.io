@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Дорамир — дорамы на телефоне и Android TV</title>
+<meta name="description" content="Бесплатное приложение для Android и Android TV: корейские, китайские и японские дорамы с озвучкой и субтитрами, синхронизация между телефоном и телевизором.">
+<meta name="theme-color" content="#0E0E14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Дорамир — дорамы на телефоне и Android TV">
+<meta property="og:description" content="Озвучки и субтитры, продолжение с того же места, общая история на телефоне и телевизоре. Бесплатно.">
+<meta property="og:image" content="assets/og.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<style>
+:root {
+  --bg: #0E0E14;
+  --surface: #17141F;
+  --surface-2: #211C2B;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #FFFFFF;
+  --muted: rgba(255, 255, 255, 0.66);
+  --faint: rgba(255, 255, 255, 0.45);
+  --accent: #FF4F7B;
+  --accent-soft: #FFD1DC;
+  --radius: 18px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent-soft); }
+img { display: block; max-width: 100%; height: auto; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+section { padding: 56px 0; }
+h1, h2, h3 { line-height: 1.2; margin: 0; }
+h2 { font-size: 30px; font-weight: 700; margin-bottom: 12px; }
+.lead { color: var(--muted); max-width: 640px; margin: 0 0 28px; }
+
+/* Шапка */
+header { padding: 18px 0; }
+header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; color: var(--text); text-decoration: none; }
+.brand img { width: 36px; height: 36px; border-radius: 9px; }
+nav a { color: var(--muted); text-decoration: none; margin-left: 20px; font-size: 15px; }
+nav a:hover { color: var(--text); }
+
+/* Первый экран */
+.hero { padding: 40px 0 56px; }
+.hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; }
+.hero h1 { font-size: 52px; font-weight: 800; letter-spacing: -0.5px; }
+.hero h1 span { color: var(--accent); }
+.hero p { color: var(--muted); font-size: 19px; margin: 18px 0 28px; max-width: 520px; }
+.buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 24px; border-radius: 999px;
+  font-weight: 600; font-size: 17px; text-decoration: none;
+  border: 1px solid var(--border); color: var(--text); background: var(--surface-2);
+}
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn.primary { background: var(--accent); border-color: var(--accent); }
+.btn:hover { filter: brightness(1.08); }
+.meta { color: var(--faint); font-size: 14px; margin-top: 14px; }
+.hero-shots { position: relative; height: 560px; }
+.phone {
+  position: absolute; width: 250px; border-radius: 30px; overflow: hidden;
+  border: 6px solid #2A2433; background: #000;
+}
+.phone.one { right: 150px; top: 0; transform: rotate(-4deg); }
+.phone.two { right: 0; top: 50px; transform: rotate(4deg); }
+
+/* Возможности */
+.features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
+.card .ic { width: 42px; height: 42px; border-radius: 12px; background: rgba(255, 79, 123, 0.14); display: grid; place-items: center; margin-bottom: 14px; }
+.card .ic svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.card h3 { font-size: 18px; margin-bottom: 6px; }
+.card p { color: var(--muted); margin: 0; font-size: 15px; }
+
+/* Скриншоты */
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 760px; }
+.gallery img { border-radius: 22px; border: 1px solid var(--border); }
+.tv { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; margin-top: 16px; }
+.tv figure { margin: 0; }
+.tv img { border-radius: 14px; border: 1px solid var(--border); }
+figcaption { color: var(--faint); font-size: 14px; margin-top: 8px; }
+
+/* Установка */
+.install { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.install ol { margin: 0; padding-left: 22px; color: var(--muted); }
+.install li { margin: 8px 0; }
+.install li b { color: var(--text); font-weight: 600; }
+code { background: var(--surface-2); padding: 2px 7px; border-radius: 6px; font-size: 15px; color: var(--accent-soft); word-break: break-all; }
+.note { margin-top: 16px; padding: 14px 18px; border-radius: 14px; background: rgba(255, 79, 123, 0.08); border: 1px solid rgba(255, 79, 123, 0.25); color: var(--muted); font-size: 15px; }
+
+/* Вопросы */
+details { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 20px; margin-bottom: 10px; }
+summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--accent); font-size: 22px; line-height: 1; }
+details[open] summary::after { content: "−"; }
+details p { color: var(--muted); margin: 10px 0 0; }
+
+/* Низ */
+.cta { text-align: center; background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 40px 20px; }
+.cta .buttons { justify-content: center; margin-top: 20px; }
+footer { padding: 32px 0 48px; color: var(--faint); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 40px; }
+  .hero-shots { height: 440px; max-width: 420px; width: 100%; margin: 0 auto; }
+  .phone { width: 200px; border-radius: 24px; }
+  .phone.one { right: auto; left: 0; }
+  .features, .gallery, .install, .tv { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .gallery img { border-radius: 12px; }
+  nav { display: none; }
+}
+@media (max-width: 420px) {
+  .hero h1 { font-size: 34px; }
+  .hero-shots { height: 380px; }
+  .phone { width: 170px; }
+  .btn { width: 100%; justify-content: center; }
+  h2 { font-size: 25px; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 19h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-tv" viewBox="0 0 24 24"><path d="M3 6h18v11H3zM8 21h8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#"><img src="assets/icon-192.png" alt="" width="36" height="36">Дорамир</a>
+    <nav>
+      <a href="#features">Возможности</a>
+      <a href="#install">Установка</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Все дорамы —<br>в <span>одном</span> приложении</h1>
+        <p>Корейские, китайские, японские и тайские дорамы с озвучкой и субтитрами. На телефоне и на телевизоре — с общей историей и продолжением с того же места.</p>
+        <div class="buttons">
+          <a class="btn primary" href="download/doramir.apk" download>
+            <svg aria-hidden="true"><use href="#i-download"/></svg>Скачать для Android
+          </a>
+          <a class="btn" href="#install-tv">
+            <svg aria-hidden="true"><use href="#i-tv"/></svg>Для Android TV
+          </a>
+        </div>
+        <div class="meta" id="version">Бесплатно · Android 6.0 и новее · один файл для телефона и ТВ</div>
+      </div>
+      <div class="hero-shots" aria-hidden="true">
+        <img class="phone one" src="assets/phone_home.webp" alt="" width="540" height="1080">
+        <img class="phone two" src="assets/phone_details.webp" alt="" width="540" height="1080">
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <h2>Что умеет Дорамир</h2>
+      <p class="lead">Сделан для того, чтобы просто включить серию — без рекламы перед видео, поиска плеера и потерянного места остановки.</p>
+      <div class="features">
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 11v2a2 2 0 0 0 2 2h1l4 4V5L6 9H5a2 2 0 0 0-2 2zM15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg></div>
+          <h3>Озвучки и субтитры</h3>
+          <p>Несколько команд озвучки на выбор. Приложение запоминает вашу озвучку для каждой дорамы.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 2M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></svg></div>
+          <h3>С того же места</h3>
+          <p>Раздел «Досмотреть» и кнопка «Продолжить» — серия включается там, где вы остановились.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h11v10H4zM17 9h3v6h-3M9 20h1"/></svg></div>
+          <h3>Телефон и телевизор</h3>
+          <p>Один аккаунт на всех устройствах: избранное, история и прогресс общие. На ТВ вход по коду с телефона.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21h4"/></svg></div>
+          <h3>Новые серии</h3>
+          <p>Раздел «Обновления» показывает, где вышли новые серии из вашего избранного.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg></div>
+          <h3>Удобный каталог</h3>
+          <p>Фильтры по жанрам, странам и годам, поиск, рейтинги, актёры и похожие дорамы.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9z"/></svg></div>
+          <h3>Свой плеер</h3>
+          <p>Выбор качества, автопереход на следующую серию, жесты на телефоне и управление пультом на ТВ.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Как это выглядит</h2>
+      <p class="lead">На телефоне — привычный интерфейс с нижним меню, на телевизоре — крупные карточки и управление пультом.</p>
+      <div class="gallery">
+        <img src="assets/phone_home.webp" alt="Главная на телефоне: новые серии и популярное" loading="lazy" width="540" height="1080">
+        <img src="assets/phone_details.webp" alt="Страница дорамы на телефоне" loading="lazy" width="540" height="1080">
+        <img src="assets/phone_voice.webp" alt="Выбор озвучки и серии" loading="lazy" width="540" height="1080">
+      </div>
+      <div class="tv">
+        <figure>
+          <img src="assets/tv_home.webp" alt="Главная на Android TV" loading="lazy" width="1280" height="720">
+          <figcaption>Главная на Android TV</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/tv_code.webp" alt="Вход на телевизоре по коду с телефона" loading="lazy" width="1280" height="720">
+          <figcaption>Вход на телевизоре по коду — без набора пароля пультом</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="wrap">
+      <h2>Как установить</h2>
+      <p class="lead">Дорамира нет в Google Play — приложение ставится из файла. Это один и тот же файл для телефона и телевизора.</p>
+      <div class="install">
+        <div class="card">
+          <h3>На телефон или планшет</h3>
+          <ol>
+            <li>Нажмите <b>«Скачать для Android»</b> вверху страницы.</li>
+            <li>Откройте скачанный файл <b>doramir.apk</b> — из уведомления или папки «Загрузки».</li>
+            <li>Если телефон спросит, разрешите <b>установку из этого источника</b> (браузера) и вернитесь назад.</li>
+            <li>Нажмите <b>«Установить»</b>. Готово — Дорамир появится среди приложений.</li>
+          </ol>
+        </div>
+        <div class="card" id="install-tv">
+          <h3>На Android TV и приставку</h3>
+          <ol>
+            <li>Установите на телевизор бесплатное приложение <b>Downloader</b> из Google Play.</li>
+            <li>Откройте его и введите адрес: <code id="apk-url">download/doramir.apk</code></li>
+            <li>Когда файл скачается, разрешите Downloader <b>установку неизвестных приложений</b> и нажмите <b>«Установить»</b>.</li>
+            <li>Чтобы история с телефона появилась на ТВ: на ТВ откройте «Настройки» → <b>«Войти по коду с телефона»</b>.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="note">Обновления ставятся так же — новый файл поверх старого. Избранное, история и настройки сохраняются.</div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <h2>Вопросы</h2>
+      <details>
+        <summary>Это бесплатно?</summary>
+        <p>Да. Регистрация не нужна — аккаунт понадобится, только если хотите общую историю на нескольких устройствах.</p>
+      </details>
+      <details>
+        <summary>Почему приложения нет в Google Play?</summary>
+        <p>Дорамир — неофициальное приложение, поэтому распространяется напрямую. Скачивайте его только с этого сайта: так вы получите оригинальный файл, а обновления будут ставиться поверх.</p>
+      </details>
+      <details>
+        <summary>Какие устройства поддерживаются?</summary>
+        <p>Телефоны и планшеты на Android 6.0 и новее, телевизоры на Android TV и Google TV, приставки (Mi Box, Chromecast with Google TV и другие). Версии для iPhone пока нет.</p>
+      </details>
+      <details>
+        <summary>Телефон предупреждает, что приложение может быть опасным</summary>
+        <p>Так Android реагирует на любое приложение не из Google Play. Разрешение нужно дать только браузеру или Downloader, и только для установки. После установки его можно отключить.</p>
+      </details>
+      <details>
+        <summary>Как перенести историю на телевизор?</summary>
+        <p>На телефоне: «Настройки» → «Синхронизация» → зарегистрируйтесь по e-mail. На телевизоре: «Настройки» → «Войти по коду с телефона», затем на телефоне «Подключить телевизор» и введите код с экрана.</p>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta">
+        <h2>Включайте дорамы</h2>
+        <p class="lead" style="margin: 0 auto">Скачайте Дорамир и смотрите на телефоне и телевизоре.</p>
+        <div class="buttons">
+          <a class="btn primary" href="download/doramir.apk" download>
+            <svg aria-hidden="true"><use href="#i-download"/></svg>Скачать для Android
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Дорамир</span>
+    <span>Неофициальное приложение. Каталог и видео загружаются со сторонних сайтов; Дорамир не хранит видео.</span>
+  </div>
+</footer>
+
+<script>
+// Полный адрес файла для Downloader на ТВ и номер версии из version.json — сайт ничего не нужно править при обновлении.
+(function () {
+  var apk = new URL('download/doramir.apk', location.href).href;
+  var el = document.getElementById('apk-url');
+  if (el && location.protocol.indexOf('http') === 0) el.textContent = apk;
+  fetch('version.json', { cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (v) {
+      if (!v) return;
+      var meta = document.getElementById('version');
+      var size = v.size ? ' · ' + (v.size / 1048576).toFixed(1).replace('.', ',') + ' МБ' : '';
+      meta.textContent = 'Версия ' + v.versionName + size + ' · бесплатно · Android 6.0 и новее';
+    })
+    .catch(function () {});
+})();
+</script>
+</body>
+</html>
