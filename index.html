@@ -85,13 +85,31 @@ nav a:hover { color: var(--text); }
 .card h3 { font-size: 18px; margin-bottom: 6px; }
 .card p { color: var(--muted); margin: 0; font-size: 15px; }
 
-/* Скриншоты */
-.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 760px; }
-.gallery img { border-radius: 22px; border: 1px solid var(--border); }
-.tv { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; margin-top: 16px; }
-.tv figure { margin: 0; }
-.tv img { border-radius: 14px; border: 1px solid var(--border); }
-figcaption { color: var(--faint); font-size: 14px; margin-top: 8px; }
+/* Скриншоты: телефоны в корпусах, ТВ в рамке с подставкой */
+.showcase { background: radial-gradient(ellipse 60% 45% at 50% 32%, rgba(255, 79, 123, 0.13), transparent 70%); }
+.center { text-align: center; }
+.center .lead { margin-left: auto; margin-right: auto; }
+.phones { display: flex; justify-content: center; align-items: flex-start; gap: 36px; padding-top: 24px; }
+.device { margin: 0; width: 250px; flex: none; text-align: center; }
+.device img {
+  border-radius: 32px; border: 7px solid #2A2433; background: #000;
+  box-shadow: 0 34px 60px -28px rgba(255, 79, 123, 0.45);
+}
+.device.raised { transform: translateY(-24px); }
+figcaption { color: var(--muted); font-size: 15px; margin-top: 14px; text-align: center; }
+.sub { font-size: 24px; text-align: center; margin: 64px 0 22px; }
+.tvset { margin: 0 auto; max-width: 920px; }
+.tvset .screen {
+  border: 10px solid #1D1924; border-radius: 16px; background: #000; overflow: hidden;
+  box-shadow: 0 30px 70px -30px rgba(255, 79, 123, 0.35);
+}
+.tvset::after {
+  content: ""; display: block; width: 26%; height: 12px; margin: 0 auto;
+  background: #1D1924; border-radius: 0 0 14px 14px;
+}
+.tvset figcaption { margin-top: 10px; }
+.tv-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 920px; margin: 32px auto 0; }
+.tv-pair .tvset .screen { border-width: 7px; border-radius: 12px; }
 
 /* Установка */
 .install { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -121,9 +139,18 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   .hero-shots { height: 440px; max-width: 420px; width: 100%; margin: 0 auto; }
   .phone { width: 200px; border-radius: 24px; }
   .phone.one { right: auto; left: 0; }
-  .features, .gallery, .install, .tv { grid-template-columns: 1fr; }
-  .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-  .gallery img { border-radius: 12px; }
+  .features, .install, .tv-pair { grid-template-columns: 1fr; }
+  /* Телефоны листаются пальцем вбок, не растягивая страницу. */
+  .phones {
+    justify-content: flex-start; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin: 0 -20px; padding: 8px 20px 12px; scrollbar-width: none;
+  }
+  .phones::-webkit-scrollbar { display: none; }
+  .device { width: 64%; max-width: 250px; scroll-snap-align: center; }
+  .device.raised { transform: none; }
+  .device img { border-radius: 24px; border-width: 5px; }
+  .tvset .screen, .tv-pair .tvset .screen { border-width: 5px; border-radius: 10px; }
+  .sub { margin-top: 44px; }
   nav { display: none; }
 }
 @media (max-width: 420px) {
@@ -217,23 +244,39 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     </div>
   </section>
 
-  <section>
+  <section class="showcase">
     <div class="wrap">
-      <h2>Как это выглядит</h2>
-      <p class="lead">На телефоне — привычный интерфейс с нижним меню, на телевизоре — крупные карточки и управление пультом.</p>
-      <div class="gallery">
-        <img src="assets/phone_home.webp" alt="Главная на телефоне: новые серии и популярное" loading="lazy" width="540" height="1080">
-        <img src="assets/phone_details.webp" alt="Страница дорамы на телефоне" loading="lazy" width="540" height="1080">
-        <img src="assets/phone_voice.webp" alt="Выбор озвучки и серии" loading="lazy" width="540" height="1080">
+      <div class="center">
+        <h2>Как это выглядит</h2>
+        <p class="lead">На телефоне — привычный интерфейс с нижним меню, на телевизоре — крупные карточки и управление пультом.</p>
       </div>
-      <div class="tv">
-        <figure>
-          <img src="assets/tv_home.webp" alt="Главная на Android TV" loading="lazy" width="1280" height="720">
-          <figcaption>Главная на Android TV</figcaption>
+      <div class="phones">
+        <figure class="device">
+          <img src="assets/phone_home.webp" alt="Главная на телефоне: новые серии и популярное" loading="lazy" width="540" height="1080">
+          <figcaption>Новые серии и подборки</figcaption>
         </figure>
-        <figure>
-          <img src="assets/tv_code.webp" alt="Вход на телевизоре по коду с телефона" loading="lazy" width="1280" height="720">
-          <figcaption>Вход на телевизоре по коду — без набора пароля пультом</figcaption>
+        <figure class="device raised">
+          <img src="assets/phone_details.webp" alt="Страница дорамы на телефоне" loading="lazy" width="540" height="1080">
+          <figcaption>Страница дорамы</figcaption>
+        </figure>
+        <figure class="device">
+          <img src="assets/phone_voice.webp" alt="Выбор озвучки и серии" loading="lazy" width="540" height="1080">
+          <figcaption>Озвучка и серии</figcaption>
+        </figure>
+      </div>
+
+      <h3 class="sub">На телевизоре</h3>
+      <figure class="tvset">
+        <div class="screen"><img src="assets/tv_home.webp" alt="Главная на Android TV" loading="lazy" width="1280" height="720"></div>
+      </figure>
+      <div class="tv-pair">
+        <figure class="tvset">
+          <div class="screen"><img src="assets/tv_details.webp" alt="Страница дорамы на Android TV" loading="lazy" width="1280" height="720"></div>
+          <figcaption>Страница дорамы — всё пультом</figcaption>
+        </figure>
+        <figure class="tvset">
+          <div class="screen"><img src="assets/tv_code.webp" alt="Вход на телевизоре по коду с телефона" loading="lazy" width="1280" height="720"></div>
+          <figcaption>Вход по коду с телефона — без набора пароля</figcaption>
         </figure>
       </div>
     </div>
