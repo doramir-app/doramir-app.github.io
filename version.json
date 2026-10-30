@@ -1,7 +1,7 @@
 {
-  "versionCode": 34,
-  "versionName": "0.18.0",
-  "apk": "https://github.com/doramir-app/doramir-app.github.io/releases/download/v0.18.0/doramir.apk",
-  "size": 6461785,
-  "notes": "Скачивания и установки теперь считаются (анонимно, без личных данных)."
+  "versionCode": 35,
+  "versionName": "0.18.1",
+  "apk": "https://github.com/doramir-app/doramir-app.github.io/releases/download/v0.18.1/doramir.apk",
+  "size": 6478182,
+  "notes": "Настройки на телефоне во всю ширину экрана, аккуратнее отступы и подписи."
 }
