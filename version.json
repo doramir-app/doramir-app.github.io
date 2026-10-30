@@ -1,7 +1,7 @@
 {
-  "versionCode": 35,
-  "versionName": "0.18.1",
-  "apk": "https://github.com/doramir-app/doramir-app.github.io/releases/download/v0.18.1/doramir.apk",
-  "size": 6478182,
-  "notes": "Настройки на телефоне во всю ширину экрана, аккуратнее отступы и подписи."
+  "versionCode": 36,
+  "versionName": "0.18.2",
+  "apk": "https://github.com/doramir-app/doramir-app.github.io/releases/download/v0.18.2/doramir.apk",
+  "size": 6478177,
+  "notes": "Новый экран «Ещё» на телефоне: закладки по статусам, последняя дорама, аккаунт. В «Досмотреть» видно полное название."
 }
