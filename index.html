@@ -189,7 +189,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <h1>Все дорамы —<br>в <span>одном</span> приложении</h1>
         <p>Корейские, китайские, японские и тайские дорамы с озвучкой и субтитрами. На телефоне и на телевизоре — с общей историей и продолжением с того же места.</p>
         <div class="buttons">
-          <a class="btn primary" href="download/doramir.apk" download>
+          <a class="btn primary" href="https://github.com/doramir-app/doramir-app.github.io/releases/latest/download/doramir.apk" download>
             <svg aria-hidden="true"><use href="#i-download"/></svg>Скачать для Android
           </a>
           <a class="btn" href="#install-tv">
@@ -300,7 +300,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <h3>На Android TV и приставку</h3>
           <ol>
             <li>Установите на телевизор бесплатное приложение <b>Downloader</b> из Google Play.</li>
-            <li>Откройте его и введите адрес: <code id="apk-url">download/doramir.apk</code></li>
+            <li>Откройте его и введите адрес: <code id="apk-url">doramir-app.github.io/download/doramir.apk</code></li>
             <li>Когда файл скачается, разрешите Downloader <b>установку неизвестных приложений</b> и нажмите <b>«Установить»</b>.</li>
             <li>Чтобы история с телефона появилась на ТВ: на ТВ откройте «Настройки» → <b>«Войти по коду с телефона»</b>.</li>
           </ol>
@@ -342,7 +342,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <h2>Включайте дорамы</h2>
         <p class="lead" style="margin: 0 auto">Скачайте Дорамир и смотрите на телефоне и телевизоре.</p>
         <div class="buttons">
-          <a class="btn primary" href="download/doramir.apk" download>
+          <a class="btn primary" href="https://github.com/doramir-app/doramir-app.github.io/releases/latest/download/doramir.apk" download>
             <svg aria-hidden="true"><use href="#i-download"/></svg>Скачать для Android
           </a>
         </div>
@@ -359,11 +359,12 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 </footer>
 
 <script>
-// Полный адрес файла для Downloader на ТВ и номер версии из version.json — сайт ничего не нужно править при обновлении.
+// Адрес файла для Downloader на ТВ (короткий, на самом сайте) и номер версии из version.json.
+// Кнопки «Скачать» ведут на последний релиз GitHub — там видно, сколько раз скачали.
 (function () {
   var apk = new URL('download/doramir.apk', location.href).href;
   var el = document.getElementById('apk-url');
-  if (el && location.protocol.indexOf('http') === 0) el.textContent = apk;
+  if (el && location.protocol.indexOf('http') === 0) el.textContent = apk.replace(/^https:\/\//, '');
   fetch('version.json', { cache: 'no-store' })
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (v) {

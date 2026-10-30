@@ -1,7 +1,7 @@
 {
-  "versionCode": 33,
-  "versionName": "0.17.3",
-  "apk": "download/doramir.apk",
-  "size": 6461720,
-  "notes": "Кадры при перемотке теперь включаются в настройках (по умолчанию выключены). На телевизоре кнопки на странице дорамы помещаются в одну строку."
+  "versionCode": 34,
+  "versionName": "0.18.0",
+  "apk": "https://github.com/doramir-app/doramir-app.github.io/releases/download/v0.18.0/doramir.apk",
+  "size": 6461785,
+  "notes": "Скачивания и установки теперь считаются (анонимно, без личных данных)."
 }
