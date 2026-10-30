@@ -1,7 +1,7 @@
 {
-  "versionCode": 36,
-  "versionName": "0.18.2",
-  "apk": "https://github.com/doramir-app/doramir-app.github.io/releases/download/v0.18.2/doramir.apk",
-  "size": 6478177,
-  "notes": "Новый экран «Ещё» на телефоне: закладки по статусам, последняя дорама, аккаунт. В «Досмотреть» видно полное название."
+  "versionCode": 37,
+  "versionName": "0.19.0",
+  "apk": "https://github.com/doramir-app/doramir-app.github.io/releases/download/v0.19.0/doramir.apk",
+  "size": 6478180,
+  "notes": "Обратная связь: «Написать разработчику» в «Ещё» и в настройках — идея, ошибка, не включается серия"
 }
