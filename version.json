@@ -1,7 +1,7 @@
 {
-  "versionCode": 38,
-  "versionName": "0.19.1",
-  "apk": "https://github.com/doramir-app/doramir-app.github.io/releases/download/v0.19.1/doramir.apk",
-  "size": 6478170,
-  "notes": "Дорама сама попадает в «Смотрю» через 5 минут просмотра — не нужно ждать конца серии"
+  "versionCode": 39,
+  "versionName": "0.19.2",
+  "apk": "https://github.com/doramir-app/doramir-app.github.io/releases/download/v0.19.2/doramir.apk",
+  "size": 6478177,
+  "notes": "На телевизоре пункт меню снова открывает свой раздел — даже из карточки дорамы, как на телефоне"
 }
