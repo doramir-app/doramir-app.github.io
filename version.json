@@ -1,7 +1,7 @@
 {
-  "versionCode": 37,
-  "versionName": "0.19.0",
-  "apk": "https://github.com/doramir-app/doramir-app.github.io/releases/download/v0.19.0/doramir.apk",
-  "size": 6478180,
-  "notes": "Обратная связь: «Написать разработчику» в «Ещё» и в настройках — идея, ошибка, не включается серия"
+  "versionCode": 38,
+  "versionName": "0.19.1",
+  "apk": "https://github.com/doramir-app/doramir-app.github.io/releases/download/v0.19.1/doramir.apk",
+  "size": 6478170,
+  "notes": "Дорама сама попадает в «Смотрю» через 5 минут просмотра — не нужно ждать конца серии"
 }
