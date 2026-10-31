@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Дорамир — дорамы на телефоне и Android TV</title>
-<meta name="description" content="Бесплатное приложение для Android и Android TV: корейские, китайские и японские дорамы с озвучкой и субтитрами, синхронизация между телефоном и телевизором.">
+<title>Дорамир — дорамы на телефоне, Android TV и Windows</title>
+<meta name="description" content="Бесплатное приложение для Android, Android TV и Windows: корейские, китайские и японские дорамы с озвучкой и субтитрами, синхронизация между телефоном и телевизором.">
 <meta name="theme-color" content="#0E0E14">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Дорамир — дорамы на телефоне и Android TV">
+<meta property="og:title" content="Дорамир — дорамы на телефоне, Android TV и Windows">
 <meta property="og:description" content="Озвучки и субтитры, продолжение с того же места, общая история на телефоне и телевизоре. Бесплатно.">
 <meta property="og:image" content="assets/og.png">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -112,7 +112,7 @@ figcaption { color: var(--muted); font-size: 15px; margin-top: 14px; text-align:
 .tv-pair .tvset .screen { border-width: 7px; border-radius: 12px; }
 
 /* Установка */
-.install { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.install { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 16px; }
 .install ol { margin: 0; padding-left: 22px; color: var(--muted); }
 .install li { margin: 8px 0; }
 .install li b { color: var(--text); font-weight: 600; }
@@ -167,6 +167,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <svg width="0" height="0" style="position:absolute">
   <defs>
     <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 19h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pc" viewBox="0 0 24 24"><path d="M3 4h18v12H3zM9 20h6M12 16v4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-tv" viewBox="0 0 24 24"><path d="M3 6h18v11H3zM8 21h8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </defs>
 </svg>
@@ -187,13 +188,16 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <div class="wrap">
       <div>
         <h1>Все дорамы —<br>в <span>одном</span> приложении</h1>
-        <p>Корейские, китайские, японские и тайские дорамы с озвучкой и субтитрами. На телефоне и на телевизоре — с общей историей и продолжением с того же места.</p>
+        <p>Корейские, китайские, японские и тайские дорамы с озвучкой и субтитрами. На телефоне, телевизоре и компьютере — с общей историей и продолжением с того же места.</p>
         <div class="buttons">
           <a class="btn primary" href="https://github.com/doramir-app/doramir-app.github.io/releases/latest/download/doramir.apk" download>
             <svg aria-hidden="true"><use href="#i-download"/></svg>Скачать для Android
           </a>
           <a class="btn" href="#install-tv">
             <svg aria-hidden="true"><use href="#i-tv"/></svg>Для Android TV
+          </a>
+          <a class="btn" href="https://github.com/doramir-app/doramir-app.github.io/releases/download/windows-1.0.0/Doramir-1.0.0.msi" download>
+            <svg aria-hidden="true"><use href="#i-pc"/></svg>Для Windows
           </a>
         </div>
         <div class="meta" id="version">Бесплатно · Android 6.0 и новее · один файл для телефона и ТВ</div>
@@ -285,7 +289,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <section id="install">
     <div class="wrap">
       <h2>Как установить</h2>
-      <p class="lead">Дорамира нет в Google Play — приложение ставится из файла. Это один и тот же файл для телефона и телевизора.</p>
+      <p class="lead">Дорамира нет в Google Play — приложение ставится из файла. Для телефона и телевизора это один и тот же файл, для компьютера — отдельный установщик.</p>
       <div class="install">
         <div class="card">
           <h3>На телефон или планшет</h3>
@@ -303,6 +307,15 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
             <li>Откройте его и введите адрес: <code id="apk-url">doramir-app.github.io/download/doramir.apk</code></li>
             <li>Когда файл скачается, разрешите Downloader <b>установку неизвестных приложений</b> и нажмите <b>«Установить»</b>.</li>
             <li>Чтобы история с телефона появилась на ТВ: на ТВ откройте «Настройки» → <b>«Войти по коду с телефона»</b>.</li>
+          </ol>
+        </div>
+        <div class="card" id="install-windows">
+          <h3>На компьютер с Windows</h3>
+          <ol>
+            <li>Скачайте установщик <a href="https://github.com/doramir-app/doramir-app.github.io/releases/download/windows-1.0.0/Doramir-1.0.0.msi" download><b>Doramir-1.0.0.msi</b></a> (97 МБ) — для Windows 10 и 11.</li>
+            <li>Откройте его. Если Windows покажет «Windows защитила ваш компьютер», нажмите <b>«Подробнее» → «Выполнить в любом случае»</b>.</li>
+            <li>Права администратора не нужны. Дорамир появится в меню «Пуск» как <b>Doramir</b>.</li>
+            <li>Чтобы история с телефона появилась на компьютере: «Настройки» → <b>«По коду с телефона»</b>.</li>
           </ol>
         </div>
       </div>
@@ -323,11 +336,15 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </details>
       <details>
         <summary>Какие устройства поддерживаются?</summary>
-        <p>Телефоны и планшеты на Android 6.0 и новее, телевизоры на Android TV и Google TV, приставки (Mi Box, Chromecast with Google TV и другие). Версии для iPhone пока нет.</p>
+        <p>Телефоны и планшеты на Android 6.0 и новее, телевизоры на Android TV и Google TV, приставки (Mi Box, Chromecast with Google TV и другие), компьютеры на Windows 10 и 11. Версии для iPhone пока нет.</p>
       </details>
       <details>
         <summary>Телефон предупреждает, что приложение может быть опасным</summary>
         <p>Так Android реагирует на любое приложение не из Google Play. Разрешение нужно дать только браузеру или Downloader, и только для установки. После установки его можно отключить.</p>
+      </details>
+      <details>
+        <summary>Чем версия для Windows отличается?</summary>
+        <p>Всё то же, но на большом экране и с клавиатурой: пробел — пауза, стрелки — перемотка, F — весь экран. Пока на компьютере работают не все плееры: Kodik и некоторые другие доступны только на телефоне и ТВ — в списке озвучек они серые.</p>
       </details>
       <details>
         <summary>Как перенести историю на телевизор?</summary>
@@ -340,10 +357,13 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <div class="wrap">
       <div class="cta">
         <h2>Включайте дорамы</h2>
-        <p class="lead" style="margin: 0 auto">Скачайте Дорамир и смотрите на телефоне и телевизоре.</p>
+        <p class="lead" style="margin: 0 auto">Скачайте Дорамир и смотрите на телефоне, телевизоре и компьютере.</p>
         <div class="buttons">
           <a class="btn primary" href="https://github.com/doramir-app/doramir-app.github.io/releases/latest/download/doramir.apk" download>
             <svg aria-hidden="true"><use href="#i-download"/></svg>Скачать для Android
+          </a>
+          <a class="btn" href="https://github.com/doramir-app/doramir-app.github.io/releases/download/windows-1.0.0/Doramir-1.0.0.msi" download>
+            <svg aria-hidden="true"><use href="#i-pc"/></svg>Для Windows
           </a>
         </div>
       </div>
